@@ -7,23 +7,24 @@ class FlorestaSinglePlayer extends Phaser.Scene{
         this.playerKey=data.player;
         this.headKey=data.headFile;
         this.collisionKey=data.collisionFile;
-        this.playerMorto=data.morto;
     }
 
     preload(){}
 
     create(){
+        this.scene.launch('background',{backKey:'backgroundForest'});
         this.map = this.make.tilemap({key:"map2S"});
-        this.background=this.add.image(0,0,'backgroundFloresta').setOrigin(0,0);
         this.tiles = this.map.addTilesetImage("TilesExamples","tiles");
         this.tiles2 = this.map.addTilesetImage("Tileset","tiles2");
+
         this.tilesAgua = this.map.addTilesetImage("water","tilesAgua");
         this.layerGround = this.map.createStaticLayer("Map_Ground", [this.tiles,this.tiles2],0,0);
         this.layerGround.setCollisionByProperty({collides:true});
+
         this.layerWater = this.map.createStaticLayer("Water", [this.tilesAgua],0,0);
         this.sign=this.physics.add.staticSprite(2242,460,'sign');
         this.pause=this.physics.add.staticSprite(770,30,'pauseButton').setScale(0.05,0.05);
-        this.pause.setInteractive({useHandCursor: true}).on('pointerdown',() => {this.scene.launch("pauseScene",{key:"montanha1v1",theme:"mountain"}); this.scene.pause()});
+        this.pause.setInteractive({useHandCursor: true}).on('pointerdown',() => {this.scene.launch("pauseScene",{key:"FlorestaSinglePlayer",theme:"forest"}); this.scene.pause()});
         this.pause.setScrollFactor(0);
 
         this.modo=1;
@@ -56,7 +57,6 @@ class FlorestaSinglePlayer extends Phaser.Scene{
         //camaras to follow player
         this.cameras.main.setBounds(0, 0, this.map.widthInPixels, this.map.heightInPixels);
         this.cameras.main.startFollow(this.player);
-        this.background.setScrollFactor(0);
         this.vidas.setScrollFactor(0);
 
         //enemies
@@ -65,14 +65,14 @@ class FlorestaSinglePlayer extends Phaser.Scene{
         //Coins
         this.createCoins();
 
+        //end level
+        this.createBau();
+
         //Caixa
         this.createCaixa();
 
         //colisoes
         this.createColisoes();
-
-        //end level
-        this.createBau();
 
         this.timeLoad=this.time.now;
     }
@@ -80,6 +80,7 @@ class FlorestaSinglePlayer extends Phaser.Scene{
     update() {
         let velocityX=160;
         let velocityY=430;
+        this.sapoAnim();
         this.transparente();
         if(this.end==0)
         {
@@ -216,8 +217,14 @@ class FlorestaSinglePlayer extends Phaser.Scene{
         });
         //animacao sapo
         this.anims.create({
-            key:'sapo',
+            key:'sapoR',
             frames: this.anims.generateFrameNumbers('sapo', {start:0, end:3}),
+            frameRate: 3,
+            repeat: -1
+        });
+        this.anims.create({
+            key:'sapoL',
+            frames: this.anims.generateFrameNumbers('sapo', {start:4, end:7}),
             frameRate: 3,
             repeat: -1
         });
@@ -290,6 +297,7 @@ class FlorestaSinglePlayer extends Phaser.Scene{
             repeatDelay: 2000,
             y:'-=180',
         });
+        //animação sapo
         this.tweens.add({
             targets: this.sapo.getChildren(),
             duration: 4000,
@@ -298,8 +306,20 @@ class FlorestaSinglePlayer extends Phaser.Scene{
             x:'+=400'
         });
         this.peixes.playAnimation('piranha');
-        this.sapo.playAnimation('sapo');
+        this.sapo.playAnimation('sapoR');
 
+    }
+
+    sapoAnim(){
+        let offsetSapo=400;
+        let sapo=this.sapo.getChildren();
+        sapo=sapo[0];
+        if(sapo.x==this.vetorSapo[0][0]+offsetSapo){
+            this.sapo.playAnimation("sapoL")
+        }
+        else if(sapo.x==this.vetorSapo[0][0]){
+            this.sapo.playAnimation('sapoR');
+        }
     }
 
     transparente(){
@@ -500,7 +520,7 @@ class FlorestaSinglePlayer extends Phaser.Scene{
     }
 
     returnCollisionMapa(player,ground){
-        return this.colision("Mapa2");
+        return this.colision("Mapa2S");
     }
 
     returnCollisionWater(player,layer){

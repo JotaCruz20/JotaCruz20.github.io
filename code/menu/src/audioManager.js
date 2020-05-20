@@ -30,6 +30,7 @@ class audioManager extends Phaser.Scene{
         }
     }
 
+
     no_volume(){
         this.theme.mute = !this.theme.mute;
     }

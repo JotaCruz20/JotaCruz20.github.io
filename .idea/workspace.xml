@@ -3,8 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="6189d30c-0e65-4660-923f-d368e4e967e9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/code/game.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/menu/src/PlayerScene.js" beforeDir="false" afterPath="$PROJECT_DIR$/code/menu/src/PlayerScene.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/Sapo/sapo1.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/Sapo/sapo1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/SpriteSheets/sapo_sprite.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/SpriteSheets/sapo_sprite.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/Nivel2/FlorestaSinglePlayer.js" beforeDir="false" afterPath="$PROJECT_DIR$/code/Nivel2/FlorestaSinglePlayer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/Nivel2/floresta1v1.js" beforeDir="false" afterPath="$PROJECT_DIR$/code/Nivel2/floresta1v1.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/menu/src/IntroScene.js" beforeDir="false" afterPath="$PROJECT_DIR$/code/menu/src/IntroScene.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/menu/src/MenuOpcoes.js" beforeDir="false" afterPath="$PROJECT_DIR$/code/menu/src/MenuOpcoes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/menu/src/audioManager.js" beforeDir="false" afterPath="$PROJECT_DIR$/code/menu/src/audioManager.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +53,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1589973446075</updated>
-      <workItem from="1589973450435" duration="6626000" />
+      <workItem from="1589973450435" duration="11618000" />
     </task>
     <task id="LOCAL-00001" summary="Bug Fixing">
       <created>1589975423546</created>

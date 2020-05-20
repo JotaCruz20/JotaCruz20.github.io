@@ -94,6 +94,7 @@ class floresta1v1 extends Phaser.Scene{
         let velocityX=160;
         let velocityY=430;
         this.transparente();
+        this.sapoAnim();
         this.cpuAnim();
         if(this.end==0)
         {
@@ -249,8 +250,14 @@ class floresta1v1 extends Phaser.Scene{
         });
         //animacao sapo
         this.anims.create({
-            key:'sapo',
+            key:'sapoR',
             frames: this.anims.generateFrameNumbers('sapo', {start:0, end:3}),
+            frameRate: 3,
+            repeat: -1
+        });
+        this.anims.create({
+            key:'sapoL',
+            frames: this.anims.generateFrameNumbers('sapo', {start:4, end:7}),
             frameRate: 3,
             repeat: -1
         });
@@ -339,8 +346,19 @@ class floresta1v1 extends Phaser.Scene{
             x:'+=400'
         });
         this.peixes.playAnimation('piranha');
-        this.sapo.playAnimation('sapo');
+        this.sapo.playAnimation('sapoR');
+    }
 
+    sapoAnim(){
+        let offsetSapo=400;
+        let sapo=this.sapo.getChildren();
+        sapo=sapo[0];
+        if(sapo.x==this.vetorSapo[0][0]+offsetSapo){
+            this.sapo.playAnimation("sapoL")
+        }
+        else if(sapo.x==this.vetorSapo[0][0]){
+            this.sapo.playAnimation('sapoR');
+        }
     }
 
     transparente(){

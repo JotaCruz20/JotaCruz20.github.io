@@ -67,6 +67,7 @@ class IntroScene extends Phaser.Scene{
         this.load.spritesheet('hearts','assets/images/Menus/images/animations/coracao_desvanecer_spritesheet.png',{ frameWidth: 60, frameHeight: 25 });
 
         this.load.image('noVolume','assets/images/Menus/images/icons/no_sound.png');
+        this.load.image('Volume','assets/images/Menus/images/icons/sound.png');
 
 
         //Tiles Nivel 1
@@ -90,22 +91,29 @@ class IntroScene extends Phaser.Scene{
         this.load.spritesheet('bauF','assets/images/SpriteSheets/bau_flip_spritesheet.png',{ frameWidth: 73, frameHeight: 60 });
         this.load.spritesheet('piranha','assets/images/SpriteSheets/piranha.png',{ frameWidth: 13, frameHeight: 19 });
         this.load.spritesheet('coracao',"assets/images/SpriteSheets/heart_spritesheet.png",{frameWidth:15, frameHeight:15});
-        this.load.spritesheet('sapo',"assets/images/SpriteSheets/sapo_sprite.png",{frameWidth:50, frameHeight:40});
+        this.load.spritesheet('sapo',"assets/images/SpriteSheets/sapo_sprite.png",{frameWidth:50, frameHeight:50});
         this.load.spritesheet('cacto','assets/images/SpriteSheets/cacto_sprite.png',{ frameWidth: 36,frameHeight: 44 });
         //Mapas
         this.load.tilemapTiledJSON("map","assets/maps/Nivel1/montanhas1v1.json");
         this.load.tilemapTiledJSON("mapSingle","assets/maps/Nivel1/MontanhasSingle.json");
         this.load.tilemapTiledJSON("map2","assets/maps/Nivel2/floresta.json");
+        this.load.tilemapTiledJSON("map2S","assets/maps/Nivel2/florestaSingle.json");
         this.load.tilemapTiledJSON("map3","assets/maps/Nivel3/deserto_tiles.json");
         //sprites para colisoes
         this.load.image("CabraAtaque1",'assets/images/cabra/cabra_grande_ataque_1.png');
         this.load.image("CabraAtaque2",'assets/images/cabra/cabra_grande_ataque_flip_1.png');
+
         this.load.image('Mapa',"assets/images/ImagemMapas/Montanhas1v1.png");
         this.load.image('MapaRochas',"assets/images/ImagemMapas/rochas.png");
+
         this.load.image('MapaSingle',"assets/images/ImagemMapas/MontanhasSingle.png");
         this.load.image('MapaRochasSingle',"assets/images/ImagemMapas/rochasSingle.png");
+
         this.load.image('Mapa2',"assets/maps/Nivel2/floresta.png");
         this.load.image('Agua',"assets/maps/Nivel2/agua.png");
+        this.load.image("Mapa2S","assets/images/ImagemMapas/florestaSingle.png");
+        this.load.image("Agua2","assets/images/ImagemMapas/waterSingle.png");
+
         this.load.image('PiranhaC',"assets/images/Piranha/1.png");
         this.load.image('sapoC',"assets/images/Sapo/sapo1.png");
         this.load.image('MapaD',"assets/images/ImagemMapas/deserto_tiles.png");

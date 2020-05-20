@@ -12,7 +12,17 @@ class MenuOpcoes extends Phaser.Scene {
     }
 
     create(){
-        this.scene.launch("background",{backKey:"backgroundMountain"});
+        let backText;
+        if(this.theme="florest"){
+            backText="backgroundForest";
+        }
+        else if(this.theme="desert"){
+            backText="backgroundDeserto";
+        }
+        else{
+            backText="backgroundMountain"
+        }
+        this.scene.launch("background",{backKey:backText});
         var volumeManager = this.scene.get('audioManager');
 
         //region Window
@@ -32,9 +42,18 @@ class MenuOpcoes extends Phaser.Scene {
         let lessVolumeButton = this.add.bitmapText(200,40,'pixel','-',43).setOrigin(0.5)
             .setInteractive({useHandCursor: true})
             .on('pointerdown',() => {volumeManager.less_volume();});
-        let noVolumeButton = this.add.image(315,25,'noVolume').setOrigin(0.5)
+
+        let noVolumeButton = this.add.image(315,25,"noVolume").setOrigin(0.5)
             .setInteractive({useHandCursor: true})
-            .on('pointerdown',() => {volumeManager.no_volume();}); //MUDAR PARA APARECER PARA PÔR O SOM
+            .on('pointerdown',() => {
+                volumeManager.no_volume();
+                if(noVolumeButton.texture.key=="noVolume") {
+                    noVolumeButton.setTexture("Volume");
+                }
+                else{
+                    noVolumeButton.setTexture("noVolume");
+                }
+            }); //MUDAR PARA APARECER PARA PÔR O SOM
 
         let musicaContainer = this.add.container(0,70,[musica,moreVolumeButton,lessVolumeButton,noVolumeButton]);
 
