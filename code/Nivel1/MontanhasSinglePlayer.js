@@ -76,6 +76,8 @@ class montanhasSinglePlayer extends Phaser.Scene{
 
         //colisoes
         this.createColisoes();
+
+        this.timeLoad=this.time.now;
     }
 
     update(){
@@ -451,13 +453,19 @@ class montanhasSinglePlayer extends Phaser.Scene{
     endLevel(player,bau){
         //Função efetuada ao acabar o nivel, começa o proximo nivel
         this.end=1;
-        var tempoFinal=this.time.now;//Calcula o tempo de jogo
+        var tempoFinal=this.time.now-this.timeLoad;//Calcula o tempo de jogo
         if (this.armor == 0) {
             this.player.anims.play("holdR");
         } else {
             this.player.anims.play("holdRArmor");
         }
         this.bau.anims.play("closeBau",true);
+        var sound=this.sound.add('bauSound',{
+            delay: 0,
+            volume: 0.5
+        });
+        sound.play();
+
         this.time.addEvent({
             delay:500,
             callback: ()=>{

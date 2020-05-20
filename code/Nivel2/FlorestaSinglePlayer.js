@@ -73,6 +73,8 @@ class FlorestaSinglePlayer extends Phaser.Scene{
 
         //end level
         this.createBau();
+
+        this.timeLoad=this.time.now;
     }
 
     update() {
@@ -470,7 +472,7 @@ class FlorestaSinglePlayer extends Phaser.Scene{
 
     endLevel(player,bau){
         this.end=1;
-        var tempoFinal=this.time.now;
+        var tempoFinal=this.time.now-this.timeLoad;
         if(this.player==player) {
             if (this.armor == 0) {
                 this.player.anims.play("holdR");
@@ -482,13 +484,18 @@ class FlorestaSinglePlayer extends Phaser.Scene{
             this.cpu.anims.play("holdRCPU")
         }
         this.bau.anims.play("closeBau",true);
-        /*this.time.addEvent({
+        var sound=this.sound.add('bauSound',{
+            delay: 0,
+            volume: 0.5
+        });
+        sound.play();
+        this.time.addEvent({
             delay:500,
             callback: ()=>{
-                this.scene.stop("montanha1v1");
-                this.scene.start("floresta1v1",{score:this.score,lifes:this.lifes,time:tempoFinal});
+                this.scene.run("winGameScene",{score:this.score,time:tempoFinal,theme:'forest'});
+                this.scene.stop();
             }
-        });*/
+        });
 
     }
 

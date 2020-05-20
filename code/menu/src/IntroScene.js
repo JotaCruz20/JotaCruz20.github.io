@@ -13,6 +13,7 @@ class IntroScene extends Phaser.Scene{
         this.load.audio("themeSong","assets/sounds/themeSong.mp3");
         this.load.audio("1up","assets/sounds/Mario 1up.wav");
         this.load.audio("deathSound","assets/sounds/Legend Of Zelda Death Sound.mp3");
+        this.load.audio("bauSound","assets/sounds/Open Chest (Minecraft)  Sound Effect.mp3");
 
         //region Buttons
         this.load.spritesheet('btn_190x49_mountain','assets/images/Menus/images/elements/mountain/btn_190x49_mountain.png',{ frameWidth: 190, frameHeight: 49 });

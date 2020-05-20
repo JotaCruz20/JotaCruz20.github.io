@@ -50,8 +50,7 @@ class floresta1v1 extends Phaser.Scene{
         this.createAnimations();
 
         //Player
-        //this.player = this.physics.add.sprite(32,550, this.playerKey);
-        this.player = this.physics.add.sprite(3200,550, this.playerKey);
+        this.player = this.physics.add.sprite(32,550, this.playerKey);
         this.player.setSize(40,50);
         this.player.setOffset(11,12);
 
@@ -87,6 +86,8 @@ class floresta1v1 extends Phaser.Scene{
 
         //colisoes
         this.createColisoes();
+
+        this.timeLoad=this.time.now;
     }
 
     update() {
@@ -659,7 +660,7 @@ class floresta1v1 extends Phaser.Scene{
 
     endLevel(player,bau){
         this.end=1;
-        var tempoFinal=this.time.now;
+        var tempoFinal=this.time.now-this.timeLoad;
         this.tempoTotal+=tempoFinal;
         if(this.player==player) {
             if (this.armor == 0) {
@@ -672,6 +673,11 @@ class floresta1v1 extends Phaser.Scene{
             this.cpu.anims.play("holdRCPU")
         }
         this.bau.anims.play("closeBau",true);
+        var sound=this.sound.add('bauSound',{
+            delay: 0,
+            volume: 0.5
+        });
+        sound.play();
         this.time.addEvent({
             delay:500,
             callback: ()=>{

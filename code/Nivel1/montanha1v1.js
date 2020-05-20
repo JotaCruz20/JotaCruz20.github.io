@@ -60,8 +60,7 @@ class montanha1v1 extends Phaser.Scene{
         this.controls = this.input.keyboard.createCursorKeys();
 
         //Player
-        //this.player = this.physics.add.sprite(32,600, this.playerKey);
-        this.player = this.physics.add.sprite(3300,500, this.playerKey);
+        this.player = this.physics.add.sprite(32,600, this.playerKey);
         this.player.setSize(40,50);
         this.player.setOffset(11,9);
 
@@ -93,6 +92,8 @@ class montanha1v1 extends Phaser.Scene{
 
         //colisoes
         this.createColisoes();
+
+        this.timeLoad=this.time.now;
     }
 
     update(){
@@ -148,6 +149,7 @@ class montanha1v1 extends Phaser.Scene{
                 this.modo = 1;
             }
         }
+
     }
 
     createAnimations(){
@@ -625,7 +627,7 @@ class montanha1v1 extends Phaser.Scene{
     endLevel(player,bau){
         //Função efetuada ao acabar o nivel, começa o proximo nivel
         this.end=1;
-        var tempoFinal=this.time.now;//Calcula o tempo de jogo
+        var tempoFinal=this.time.now-this.timeLoad;//Calcula o tempo de jogo
         if(this.player==player) {
             if (this.armor == 0) {
                 this.player.anims.play("holdR");
@@ -637,6 +639,11 @@ class montanha1v1 extends Phaser.Scene{
             this.cpu.anims.play("holdRCPU")
         }
         this.bau.anims.play("closeBau",true);
+        var sound=this.sound.add('bauSound',{
+            delay: 0,
+            volume: 0.5
+        });
+        sound.play();
         this.time.addEvent({
             delay:500,
             callback: ()=>{
