@@ -48,10 +48,10 @@ class MenuOpcoes extends Phaser.Scene {
             .on('pointerdown',() => {
                 volumeManager.no_volume();
                 if(noVolumeButton.texture.key=="noVolume") {
-                    noVolumeButton.setTexture("Volume");
+                    noVolumeButton.setTexture("noVolume");
                 }
                 else{
-                    noVolumeButton.setTexture("noVolume");
+                    noVolumeButton.setTexture("Volume");
                 }
             });
 
