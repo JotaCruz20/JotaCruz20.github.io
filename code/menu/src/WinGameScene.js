@@ -35,7 +35,7 @@ class WinGameScene extends Phaser.Scene {
 
         coinAnim.play('anim_coin');
 
-        const clockAnim = this.add.sprite(180,150,'clock',0);
+        const clockAnim = this.add.sprite(160,150,'clock',0);
 
         this.anims.create({
             key: 'anim_clock',
@@ -60,7 +60,7 @@ class WinGameScene extends Phaser.Scene {
         //endregion
 
         //region Voltar Menu
-        let btnMenu = this.add.sprite(0,0,'btn_300x80_'+this.theme,0);
+        let btnMenu = this.add.sprite(0,0,'btn_300x80_'+this.theme,0).setScale(1,0.7);
         let textMenu = this.add.bitmapText(0,0,'pixel','Menu Principal',20).setOrigin(0.5);
 
         this.add.container(400,350,[btnMenu,textMenu])
@@ -79,10 +79,10 @@ class WinGameScene extends Phaser.Scene {
         //endregion
 
         //region Rankig
-        let btnCont = this.add.sprite(0,0,'btn_300x80_'+this.theme,0);
+        let btnCont = this.add.sprite(0,0,'btn_300x80_'+this.theme,0).setScale(1,0.7);
         let textCont = this.add.bitmapText(0,0,'pixel','Ranking',20).setOrigin(0.5);
 
-        this.add.container(400,450,[btnCont,textCont])
+        this.add.container(400,415,[btnCont,textCont])
             .setSize(300,80)
             .setInteractive({useHandCursor:true}, Phaser.Geom.Rectangle.Contains)
 
@@ -95,5 +95,27 @@ class WinGameScene extends Phaser.Scene {
                 textCont.y = 0;
                 this.scene.start("rankingScene",{prev:"winGameScene",theme: this.theme});});
         //endregion
+
+        //seleção
+        let btnSelec = this.add.sprite(0,0,'btn_300x80_'+this.theme,0).setScale(1,0.7);
+        let textSelec = this.add.bitmapText(0,0,'pixel','Menu Seleção Personagem',20).setOrigin(0.5);
+
+        this.add.container(400,475,[btnSelec,textSelec])
+            .setSize(300,80)
+            .setInteractive({useHandCursor:true}, Phaser.Geom.Rectangle.Contains)
+
+            .on('pointerdown',() => {
+                btnCont.setFrame(1);
+                textCont.y = 5;
+            })
+            .on('pointerup',() => {
+                btnCont.setFrame(0);
+                textCont.y = 0;
+                this.scene.stop();
+                this.scene.stop("background");
+                this.scene.start("chooseScene");
+            });
     }
+
+
 }

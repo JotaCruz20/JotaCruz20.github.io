@@ -43,11 +43,11 @@ class MenuOpcoes extends Phaser.Scene {
             .setInteractive({useHandCursor: true})
             .on('pointerdown',() => {volumeManager.less_volume();});
 
-        let noVolumeButton = this.add.image(315,25,"noVolume").setOrigin(0.5)
+        let noVolumeButton = this.add.image(315,25,"Volume").setOrigin(0.5)
             .setInteractive({useHandCursor: true})
             .on('pointerdown',() => {
                 volumeManager.no_volume();
-                if(noVolumeButton.texture.key=="noVolume") {
+                if(noVolumeButton.texture.key=="Volume") {
                     noVolumeButton.setTexture("noVolume");
                 }
                 else{

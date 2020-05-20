@@ -5,10 +5,30 @@ class PlayerScene extends Phaser.Scene {
     }
 
     preload(){
-        this.load.image('Joquinha','assets/images/Menus/images/idle/joao_idle.png');
-        this.load.image('Loretinho','assets/images/Menus/images/idle/loretinho_idle.png');
-        this.load.image('Mimi','assets/images/Menus/images/idle/mimi_idle.png');
-
+        //remove as cenas e volta a adicionar
+        this.scene.remove("montanha1v1");
+        this.scene.add("montanha1v1",montanha1v1,false);
+        this.scene.remove("floresta1v1");
+        this.scene.add("floresta1v1",floresta1v1,false);
+        this.scene.remove("montanhaSingle");
+        this.scene.add("montanhaSingle",montanhasSinglePlayer,false);
+        this.scene.remove("FlorestaSinglePlayer");
+        this.scene.add("FlorestaSinglePlayer",FlorestaSinglePlayer,false);
+        //remover animations
+        this.anims.remove('left');
+        this.anims.remove('right');
+        this.anims.remove('holdR');
+        this.anims.remove('holdL');
+        this.anims.remove('leftArmor');
+        this.anims.remove('holdRArmor');
+        this.anims.remove('rightArmor');
+        this.anims.remove('leftArmorPerder');
+        this.anims.remove('rightArmorPerder');
+        this.anims.remove('holdRArmorPerder');
+        this.anims.remove('holdLArmorPerder');
+        this.anims.remove('rightCPU');
+        this.anims.remove("leftCPU");
+        this.anims.remove('holdRCPU');
     }
 
     create(){

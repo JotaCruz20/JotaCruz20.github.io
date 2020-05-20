@@ -140,6 +140,11 @@ class IntroScene extends Phaser.Scene{
         this.load.spritesheet('cpuMimi',"assets/images/SpriteSheets/sprite_sheet_mariana.png",{ frameWidth: 63, frameHeight: 63 });
         this.load.image('PlayerCollisionMimi',"assets/images/Mariana/mariana_base_63px1.png");
         this.load.image("cabecaMimi","assets/images/Mariana/cabeca.png");
+
+        //Players
+        this.load.image('Joquinha','assets/images/Menus/images/idle/joao_idle.png');
+        this.load.image('Loretinho','assets/images/Menus/images/idle/loretinho_idle.png');
+        this.load.image('Mimi','assets/images/Menus/images/idle/mimi_idle.png');
     }
 
     create() {

@@ -8,7 +8,6 @@ class ChooseScenario extends Phaser.Scene {
         this.playerKey=data.player;
         this.headKey=data.headFile;
         this.collisionKey=data.collisionFile;
-        this.playerMorto=data.morto;
     }
 
     preload(){}

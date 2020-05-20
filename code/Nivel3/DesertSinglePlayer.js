@@ -447,11 +447,11 @@ class desertSinglePlayer extends Phaser.Scene{
     }
 
     returnCollisionMapa(){
-        return this.colision("MapaD");
+        return this.colision("MapaDS");
     }
 
     returnCollisionAreia(){
-        return this.colision("MapaAreia");
+        return this.colision("MapaAreiaS");
     }
 
     returnCollisionCactos(player, cactos){

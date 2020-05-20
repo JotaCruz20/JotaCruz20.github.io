@@ -2,7 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6189d30c-0e65-4660-923f-d368e4e967e9" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/Nivel3/DesertSinglePlayer.js" beforeDir="false" afterPath="$PROJECT_DIR$/code/Nivel3/DesertSinglePlayer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/menu/src/AnimationScene.js" beforeDir="false" afterPath="$PROJECT_DIR$/code/menu/src/AnimationScene.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/menu/src/ChooseScenario.js" beforeDir="false" afterPath="$PROJECT_DIR$/code/menu/src/ChooseScenario.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/menu/src/IntroScene.js" beforeDir="false" afterPath="$PROJECT_DIR$/code/menu/src/IntroScene.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/menu/src/LoseGameScene.js" beforeDir="false" afterPath="$PROJECT_DIR$/code/menu/src/LoseGameScene.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/code/menu/src/MenuOpcoes.js" beforeDir="false" afterPath="$PROJECT_DIR$/code/menu/src/MenuOpcoes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/menu/src/PlayerScene.js" beforeDir="false" afterPath="$PROJECT_DIR$/code/menu/src/PlayerScene.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/menu/src/WinGameScene.js" beforeDir="false" afterPath="$PROJECT_DIR$/code/menu/src/WinGameScene.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,7 +55,7 @@
       <option name="presentableId" value="Default" />
       <updated>1589973446075</updated>
       <workItem from="1589973450435" duration="12426000" />
-      <workItem from="1589991466465" duration="6398000" />
+      <workItem from="1589991466465" duration="7744000" />
     </task>
     <task id="LOCAL-00001" summary="Bug Fixing">
       <created>1589975423546</created>

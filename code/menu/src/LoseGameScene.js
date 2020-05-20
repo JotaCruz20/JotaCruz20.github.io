@@ -52,7 +52,7 @@ class LoseGameScene extends Phaser.Scene {
 
         //region Rankig
         let btnCont = this.add.sprite(0,0,'btn_300x80_'+this.theme,0);
-        let textCont = this.add.bitmapText(0,0,'pixel','Ranking',20).setOrigin(0.5);
+        let textCont = this.add.bitmapText(0,0,'pixel','Menu Seleção Personagem',20).setOrigin(0.5);
 
         this.add.container(400,450,[btnCont,textCont])
             .setSize(300,80)
@@ -65,7 +65,10 @@ class LoseGameScene extends Phaser.Scene {
             .on('pointerup',() => {
                 btnCont.setFrame(0);
                 textCont.y = 0;
-                this.scene.start("rankingScene",{prev:"loseGameScene",theme: this.theme});});
+                this.scene.stop();
+                this.scene.stop("background");
+                this.scene.start("chooseScene");
+            });
         //endregion
 
     }
