@@ -400,9 +400,10 @@ class montanha1v1 extends Phaser.Scene{
         //função que vai pegar no array de posiçoes do CPU e vai fazer o comportamento dele atraves do array de goto que vai ter as coordenadas de onde o CPU tem de ir
         let originX=32;
         let originY=150;
+        let offset=10;
         if(this.cpu.body.y==this.mapaAlturaMetade){//quer dizer q morreu
             if(this.cpu.body.x>this.sign2.x){
-                this.gotoXY(this.sign2.x,this.sign2.y);
+                this.gotoXY(this.sign2.body.x,this.sign2.body.y-offset);
                 for(let i=9;i<this.positionCoins.length;i++){//Vai recreiar as coins do CPU
                     this.coins.create(this.positionCoins[i][0],this.positionCoins[i][1],'coins').body.setSize(10,15).setOffset(11,7);
                 }
