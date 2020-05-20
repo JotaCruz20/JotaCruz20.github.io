@@ -5,9 +5,6 @@ class AnimationScene extends Phaser.Scene {
     }
 
     preload(){
-
-
-
         //remove as cenas e volta a adicionar
         this.scene.remove("montanha1v1");
         this.scene.add("montanha1v1",montanha1v1,false);
@@ -37,10 +34,19 @@ class AnimationScene extends Phaser.Scene {
     create() {
         const anim = this.add.sprite(400, 300, 'anim_story', 0).setScale(2);
 
+        let infor = this.add.text(30,30,'Clique no espaço para passar',{fontSize:'20px',fill:'black'});
+
+        this.time.addEvent({
+            delay: 2000,
+            callback: () => {
+                infor.destroy();
+            }
+        });
+
         this.anims.create({
             key: 'story',
             frames: this.anims.generateFrameNumbers('anim_story', {start: 0}),
-            frameRate: 7,
+            frameRate: 6,
         });
 
         anim.play('story');

@@ -33,7 +33,6 @@ class ChooseScenario extends Phaser.Scene {
             .on('pointerup',() => {
                 buttonDeserto.setFrame(0);
                 textDeserto.y = 0;
-                //this.scene.start("gameScene");
                 });
         //endregion
 
@@ -52,8 +51,7 @@ class ChooseScenario extends Phaser.Scene {
             .on('pointerup',() => {
                 buttonFloresta.setFrame(0);
                 textFloresta.y = 0;
-                //this.scene.start("opcoesScene",{prev:"pauseScene",theme:this.theme});
-                //this.scene.stop("background");
+                this.scene.start("FlorestaSinglePlayer",{player:this.playerKey,headFile:this.headKey,collisionFile:this.collisionKey});
             });
         //endregion
 

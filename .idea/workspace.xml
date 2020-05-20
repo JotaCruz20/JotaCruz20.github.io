@@ -4,7 +4,9 @@
     <list default="true" id="6189d30c-0e65-4660-923f-d368e4e967e9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/code/menu/src/AnimationScene.js" beforeDir="false" afterPath="$PROJECT_DIR$/code/menu/src/AnimationScene.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/menu/src/IntroScene.js" beforeDir="false" afterPath="$PROJECT_DIR$/code/menu/src/IntroScene.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/menu/src/ChooseScenario.js" beforeDir="false" afterPath="$PROJECT_DIR$/code/menu/src/ChooseScenario.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/menu/src/GameScene.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +50,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1589973446075</updated>
-      <workItem from="1589973450435" duration="5123000" />
+      <workItem from="1589973450435" duration="5958000" />
     </task>
     <task id="LOCAL-00001" summary="Bug Fixing">
       <created>1589975423546</created>
@@ -68,6 +70,10 @@
     <option name="LAST_COMMIT_MESSAGE" value="Bug Fixing" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="468" y="180" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1589980833382">
+      <screen x="0" y="0" width="1474" height="864" />
+    </state>
+    <state x="468" y="180" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1474.864@0.0.1474.864" timestamp="1589980833382" />
     <state x="360" y="0" key="CommitChangelistDialog2" timestamp="1589975420276">
       <screen x="0" y="0" width="1474" height="864" />
     </state>
