@@ -13,10 +13,10 @@ class MenuOpcoes extends Phaser.Scene {
 
     create(){
         let backText;
-        if(this.theme="florest"){
+        if(this.theme=="forest"){
             backText="backgroundForest";
         }
-        else if(this.theme="desert"){
+        else if(this.theme=="desert"){
             backText="backgroundDeserto";
         }
         else{
@@ -53,7 +53,7 @@ class MenuOpcoes extends Phaser.Scene {
                 else{
                     noVolumeButton.setTexture("noVolume");
                 }
-            }); //MUDAR PARA APARECER PARA PÔR O SOM
+            });
 
         let musicaContainer = this.add.container(0,70,[musica,moreVolumeButton,lessVolumeButton,noVolumeButton]);
 

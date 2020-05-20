@@ -79,6 +79,7 @@ class IntroScene extends Phaser.Scene{
         this.load.image("tiles2","assets/maps/Nivel2/Tileset.png");
         this.load.image("tilesAgua","assets/maps/Nivel2/coldwaterdeepwater.png");
         this.load.image('backgroundFloresta','assets/images/Background/florestaa.png');
+        //Tiles Deserto
         this.load.image('backgroundDeserto','assets/images/Background/deserto2.png');
         this.load.image("tile_setD","assets/images/ImagemMapas/_902808864.png");
         this.load.image('areia','assets/images/SpriteSheets/hyptosis_tile-art-batch-1.png');
@@ -99,6 +100,7 @@ class IntroScene extends Phaser.Scene{
         this.load.tilemapTiledJSON("map2","assets/maps/Nivel2/floresta.json");
         this.load.tilemapTiledJSON("map2S","assets/maps/Nivel2/florestaSingle.json");
         this.load.tilemapTiledJSON("map3","assets/maps/Nivel3/deserto_tiles.json");
+        this.load.tilemapTiledJSON("map3S","assets/maps/Nivel3/desertoSingle.json");
         //sprites para colisoes
         this.load.image("CabraAtaque1",'assets/images/cabra/cabra_grande_ataque_1.png');
         this.load.image("CabraAtaque2",'assets/images/cabra/cabra_grande_ataque_flip_1.png');
@@ -114,10 +116,13 @@ class IntroScene extends Phaser.Scene{
         this.load.image("Mapa2S","assets/images/ImagemMapas/florestaSingle.png");
         this.load.image("Agua2","assets/images/ImagemMapas/waterSingle.png");
 
-        this.load.image('PiranhaC',"assets/images/Piranha/1.png");
-        this.load.image('sapoC',"assets/images/Sapo/sapo1.png");
         this.load.image('MapaD',"assets/images/ImagemMapas/deserto_tiles.png");
         this.load.image('MapaAreia',"assets/images/ImagemMapas/areia.png");
+        this.load.image('MapaDS',"assets/images/ImagemMapas/deserto_tiles_single.png");
+        this.load.image('MapaAreiaS',"assets/images/ImagemMapas/areia_single.png");
+
+        this.load.image('PiranhaC',"assets/images/Piranha/1.png");
+        this.load.image('sapoC',"assets/images/Sapo/sapo1.png");
         this.load.image('cactoC',"assets/images/Cacto/cactos1.png");
 
         //Texturas Joao

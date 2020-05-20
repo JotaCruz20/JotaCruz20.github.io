@@ -1,35 +1,21 @@
-class DesertSinglePalyer extends Phaser.Scene{
+class desertSinglePlayer extends Phaser.Scene{
     constructor() {
-        super({key:"deserto1v1"});
+        super({key:"desertoSingle"});
     }
 
-    preload(){
-        //imagens do jogo
-        this.load.image("tile_set","assets/images/ImagemMapas/_902808864.png");
-        this.load.image("cabeça",'assets/images/Joao/Cabeca.png');
-        this.load.image('backgroundDesert','assets/images/Background/deserto2.png');
-        this.load.image('areia','assets/images/SpriteSheets/hyptosis_tile-art-batch-1.png');
-        this.load.spritesheet('sign',"assets/images/SpriteSheets/signpost.png",{ frameWidth: 50, frameHeight: 50 });
-        this.load.spritesheet('player','assets/images/SpriteSheets/joao_spritesheet.png',{ frameWidth: 63, frameHeight: 63 });
-        this.load.spritesheet('stairs','assets/images/SpriteSheets/stairs.png',{ frameWidth: 16, frameHeight: 32 });
-        this.load.spritesheet('coins','assets/images/SpriteSheets/moedaG_spritesheet.png',{ frameWidth: 30, frameHeight: 30 });
-        this.load.spritesheet('cacto','assets/images/SpriteSheets/cacto_sprite.png',{ frameWidth: 36,frameHeight: 44 });
-        this.load.spritesheet('caixa','assets/images/SpriteSheets/caixa.png',{ frameWidth: 40, frameHeight: 40 });
-        this.load.spritesheet('bau','assets/images/SpriteSheets/bau_flip_spritesheet.png',{ frameWidth: 73, frameHeight: 60 });
-        this.load.tilemapTiledJSON("map3","assets/maps/deserto/deserto_tiles_single.json");
-
-        //sprites para colisoes
-        this.load.image('Mapa',"assets/images/ImagemMapas/deserto_tiles_single.png");
-        this.load.image('MapaAreia',"assets/images/ImagemMapas/areia_single.png");
-        this.load.image('cactoC',"assets/images/Cacto/cacto1.png");
-        this.load.image('playerCollison', "assets/images/Joao/joao_idle_63px_1.png")
+    init(data){//recebe as vidas,pontos e tempo total atual
+        this.playerKey=data.player;
+        this.headKey=data.headFile;
+        this.collisionKey=data.collisionFile;
     }
+
+    preload(){}
 
     create(){
+        this.scene.launch('background',{backKey:'backgroundDeserto'});
         //Mapa
-        this.map = this.make.tilemap({key:"map3"});
-        this.background = this.add.image(0,0,'backgroundDesert').setOrigin(0,0);
-        this.tiles = this.map.addTilesetImage("_902808864","tile_set");
+        this.map = this.make.tilemap({key:"map3S"});
+        this.tiles = this.map.addTilesetImage("_902808864","tile_setD");
         this.areia = this.map.addTilesetImage('hyptosis_tile-art-batch-1','areia');
         this.layerGround = this.map.createStaticLayer("Camada de Tiles 1", [this.tiles],0,0);
         this.layerAreia = this.map.createStaticLayer("Camada de Tiles 2", [this.areia],0,0);
@@ -39,11 +25,8 @@ class DesertSinglePalyer extends Phaser.Scene{
         this.stairs.setSize(20,92);
         this.stairs.setScale(2,3);
         this.sign=this.physics.add.staticSprite(2256,464,'sign');
-        /*
-        this.pause=this.physics.add.staticSprite(770,30,'pauseButton').setScale(0.05,0.05);
-        this.pause.setInteractive({useHandCursor: true}).on('pointerdown',() => {this.scene.launch("pauseScene",{key:"deserto1v1",theme:"desert"}); this.scene.pause()});
-        this.pause.setScrollFactor(0);
-         */
+
+
 
         //Variaveis de Jogo
         this.modo = 1;
@@ -52,12 +35,14 @@ class DesertSinglePalyer extends Phaser.Scene{
         this.score = 0;
         this.scoreSpawnPoint = 0;
         this.spawnpoint = 0;
-        this.flagCactos = 0;
         this.flagHelper = 0;
         this.flagCaixa = 0;
         this.armorLost = 0;
         this.armor = 0;
         this.end = 0;
+        this.pause=this.physics.add.staticSprite(770,30,'pauseButton').setScale(0.05,0.05);
+        this.pause.setInteractive({useHandCursor: true}).on('pointerdown',() => {this.scene.launch("pauseScene",{key:"desertoSingle",theme:"desert"}); this.scene.pause()});
+        this.pause.setScrollFactor(0);
 
         //animations
         this.createAnimations();
@@ -66,14 +51,15 @@ class DesertSinglePalyer extends Phaser.Scene{
         this.controls = this.input.keyboard.createCursorKeys();
 
         //Player
-        this.player = this.physics.add.sprite(35,525,'player');
+        this.player = this.physics.add.sprite(35,525,this.playerKey);
         this.player.setSize(40,50);
         this.player.setOffset(11,9);
 
+
         //Score
-        this.cabeca=this.physics.add.staticImage(50,70,'cabeça');
+        this.cabeca=this.physics.add.staticImage(50,70,this.headKey);
         this.cabeca.setScrollFactor(0);
-        this.vidas=this.add.text(30,30,'Coins: 0\n    x3',{fontSize:'20px',fill:'white'});
+        this.vidas=this.add.text(30,30,'Coins: '+this.score+'\n    x'+this.lifes,{fontSize:'20px',fill:'white'});
 
         //Enemy
         this.createEnemies();
@@ -90,15 +76,14 @@ class DesertSinglePalyer extends Phaser.Scene{
         //camaras to follow player
         this.cameras.main.setBounds(0, 0, this.map.widthInPixels, this.map.heightInPixels);
         this.cameras.main.startFollow(this.player);
-        this.background.setScrollFactor(0);
         this.vidas.setScrollFactor(0);
 
         //colisoes
         this.createColisoes();
+        this.timeLoad=this.time.now;
     }
 
     update(){
-        this.startCacto();
         if(this.end === 0)
         {
             if (this.controls.left.isDown) {
@@ -153,78 +138,77 @@ class DesertSinglePalyer extends Phaser.Scene{
     }
 
     createAnimations(){
-        //animações normais
         this.anims.create({
             key:'left',
-            frames: this.anims.generateFrameNumbers('player', {start: 12, end: 13}),
+            frames: this.anims.generateFrameNumbers(this.playerKey, {start: 12, end: 13}),
             frameRate: 5,
             repeat: -1
         });
         this.anims.create({
             key: 'right',
-            frames: this.anims.generateFrameNumbers('player', {start: 10, end: 11}),
+            frames: this.anims.generateFrameNumbers(this.playerKey, {start: 10, end: 11}),
             frameRate: 5,
             repeat: -1
         });
         this.anims.create({
             key: 'holdR',
-            frames: this.anims.generateFrameNumbers('player', {start: 0, end: 4}),
+            frames: this.anims.generateFrameNumbers(this.playerKey, {start: 0, end: 4}),
             frameRate: 2,
             repeat: -1
         });
         this.anims.create({
             key: 'holdL',
-            frames: this.anims.generateFrameNumbers('player', {start: 5, end: 9}),
+            frames: this.anims.generateFrameNumbers(this.playerKey, {start: 5, end: 9}),
             frameRate: 2,
             repeat: -1
         });
         //animaçoes armadura
         this.anims.create({
             key:'leftArmor',
-            frames: this.anims.generateFrameNumbers('player', {start: 24, end: 25}),
+            frames: this.anims.generateFrameNumbers(this.playerKey, {start: 26, end: 27}),
             frameRate: 5,
             repeat: -1
         });
         this.anims.create({
             key: 'rightArmor',
-            frames: this.anims.generateFrameNumbers('player', {start: 22, end: 23}),
+            frames: this.anims.generateFrameNumbers(this.playerKey, {start: 24, end: 25}),
             frameRate: 5,
             repeat: -1
         });
         this.anims.create({
             key: 'holdRArmor',
-            frames: this.anims.generateFrameNumbers('player', {start:14, end: 17}),
+            frames: this.anims.generateFrameNumbers(this.playerKey, {start:14, end: 18}),
             frameRate: 2,
             repeat: -1
         });
         this.anims.create({
             key: 'holdLArmor',
-            frames: this.anims.generateFrameNumbers('player', {start: 18, end: 21}),
+            frames: this.anims.generateFrameNumbers(this.playerKey, {start: 19, end: 23}),
             frameRate: 2,
             repeat: -1
         });
         //animações perder armadura
         this.anims.create({
             key:'leftArmorPerder',
-            frames: this.anims.generateFrameNumbers('player', {frames:[12,24,13,25]}),
+            frames: this.anims.generateFrameNumbers(this.playerKey, {frames:[12,26,13,27]}),
             frameRate: 5,
             repeat: -1
         });
         this.anims.create({
             key: 'rightArmorPerder',
-            frames: this.anims.generateFrameNumbers('player', {frames:[10,22,11,23 ]}),
+            frames: this.anims.generateFrameNumbers(this.playerKey, {frames:[10,24,11,25 ]}),
             frameRate: 5,
             repeat: -1
         });
         this.anims.create({
             key: 'holdRArmorPerder',
-            frames: this.anims.generateFrameNumbers('player', {frames: [0,14,1,15,2,16,3,17]}),
+            frames: this.anims.generateFrameNumbers(this.playerKey, {frames: [0,14,1,15,2,16,3,17]}),
             frameRate: 2,
             repeat: -1
         });
         this.anims.create({
             key: 'holdLArmorPerder',
-            frames: this.anims.generateFrameNumbers('player', {frames:[5,18,6,19,7,20,8,21]}),
+            frames: this.anims.generateFrameNumbers(this.playerKey, {frames:[5,18,6,19,7,20,8,21,9,22]}),
             frameRate: 2,
             repeat: -1
         });
@@ -251,7 +235,7 @@ class DesertSinglePalyer extends Phaser.Scene{
         //animaçao bau
         this.anims.create({
             key:'closeBau',
-            frames: this.anims.generateFrameNames('bau',{start:0, end:3}),
+            frames: this.anims.generateFrameNames('bauF',{start:0, end:3}),
             frameRate:10
         })
     }
@@ -259,7 +243,7 @@ class DesertSinglePalyer extends Phaser.Scene{
     createCoins(){
         //moedas player
         this.coins=this.physics.add.staticGroup();
-        this.positionCoins=[[864, 496],[920, 496],[976, 496],[1856, 560],[3064, 576],[3237, 448],[3301, 448],[3464, 576]];
+        this.positionCoins=[[800,520],[864, 496],[920, 496],[976, 496],[1856, 560],[3064, 576],[3237, 448],[3301, 448],[3464, 576]];
         for(let i=0; i<this.positionCoins.length; i++){
             this.coins.create(this.positionCoins[i][0],this.positionCoins[i][1],'coins').body.setSize(10,15).setOffset(11,7);
         }
@@ -267,11 +251,15 @@ class DesertSinglePalyer extends Phaser.Scene{
     }
 
     createEnemies(){
-        this.cactos=this.physics.add.group();
+        this.cactos=this.physics.add.group({
+                immovable: true,
+                allowGravity: false
+            }
+        );
         this.vetorPosicaoCactos=[570, 2597];
-        this.cactos.create(this.vetorPosicaoCactos[0], 496, 'cacto').setScale(1.3).setSize(36,45).setOffset(0,0);
-        this.cactos.create(this.vetorPosicaoCactos[1], 592, 'cacto').setScale(1.3).setSize(36,45).setOffset(0,0);
-        this.physics.add.collider(this.cactos,this.layerGround);
+        this.cactos.create(this.vetorPosicaoCactos[0], 490, 'cacto').setScale(1.3).setSize(36,45).setOffset(0,0);
+        this.cactos.create(this.vetorPosicaoCactos[1], 580, 'cacto').setScale(1.3).setSize(36,45).setOffset(0,0);
+        //this.physics.add.collider(this.cactos,this.layerGround);
         this.tweens.add({
             targets: this.cactos.getChildren(),
             duration: 1000,
@@ -279,10 +267,11 @@ class DesertSinglePalyer extends Phaser.Scene{
             yoyo: true,
             y:'-=50'
         });
+        this.cactos.playAnimation("jumpCacto");
     }
 
     createColisoes(){
-        this.physics.world.setBounds(0,0,4000,704);
+        this.physics.world.setBounds(0,0,4000,640);
         this.layerGround.setCollisionByExclusion([-1]);
 
         //player
@@ -295,7 +284,6 @@ class DesertSinglePalyer extends Phaser.Scene{
         this.physics.add.collider(this.player,this.layerGround,null,this.returnCollisionMapa,this);
         this.physics.add.collider(this.player,this.bau,this.endLevel,null,this);
         this.physics.add.collider(this.player,this.caixa,this.catchCaixa,null,this);
-
     }
 
     createCaixa(){
@@ -307,7 +295,7 @@ class DesertSinglePalyer extends Phaser.Scene{
     }
 
     createBau(){
-        this.bau=this.physics.add.staticSprite(3951,528,"bau");
+        this.bau=this.physics.add.staticSprite(3951,528,"bauF");
         this.bau.setScale(0.5,0.5);
         this.bau.setSize(36,25);
         this.bau.setOffset(17,20);
@@ -317,28 +305,25 @@ class DesertSinglePalyer extends Phaser.Scene{
         this.coins.playAnimation('coin',true);
     }
 
-    startCacto(){
-        let vetor_cactos = this.cactos.getChildren();
-        let i=0;
-        for (i; i<vetor_cactos.length;i++){
-            let cactos = vetor_cactos[i];
-            cactos.anims.play('jumpCacto', true);
-            cactos.setVelocityY(200);
-        }
-    }
 
     morte(){
-        let originX=35;
+        let originX=32;
         let originY=525;
-        if(this.armor === 0 && this.armorLost === 0) {
+        let offset=50;
+        if(this.armor == 0 && this.armorLost==0) {
             this.lifes -= 1;
-            if(this.lifes === 0){
+            var sound=this.sound.add('deathSound',{
+                delay: 0,
+                volume: 0.5
+            });
+            sound.play();
+            if(this.lifes==0){
                 this.end=1;
                 this.scene.stop();
-                //this.scene.start("loseScene",{theme:"desert",backKey:"backgroundDesert"});
+                this.scene.start("loseGameScene",{theme:"desert",backKey:"backgroundDeserto"});
             }
             this.flagHelper = 0;
-            if (this.spawnpoint === 0) {
+            if (this.spawnpoint == 0) {
                 this.player.body.x = originX;
                 this.player.body.y = originY;
                 this.score = 0;
@@ -348,20 +333,20 @@ class DesertSinglePalyer extends Phaser.Scene{
                     coins[i].enableBody(true, this.positionCoins[i][0], this.positionCoins[i][1], true, true);
                 }
                 this.vidas.setText('Coins: ' + this.score + '\n    x' + this.lifes);
-            } else if(this.armor === 1 && this.armorLost === 0) {
+            } else{
                 this.player.body.x = this.sign.body.x;
-                this.player.body.y = this.sign.body.y;
+                this.player.body.y = this.sign.body.y-offset;
                 this.score = this.scoreSpawnPoint;
                 this.vidas.setText('Coins: ' + this.score + '\n    x' + this.lifes);
                 let i;
                 let coins = this.coins.getChildren();
-                for (i = 4; i < coins.length/2; i++) { //repor a partir da quarta moeda
+                for (i = 5; i < 6; i++) {
                     coins[i].enableBody(true, this.positionCoins[i][0], this.positionCoins[i][1], true, true);
                 }
             }
         }
-        else if(this.armor === 1 && this.armorLost === 0){
-            this.armorLost = 1;
+        else if(this.armor==1 && this.armorLost==0){
+            this.armorLost=1;
             this.time.addEvent({
                 delay:1500,
                 callback: ()=>{
@@ -384,18 +369,36 @@ class DesertSinglePalyer extends Phaser.Scene{
             if (this.spawnpoint === 0) {
                 this.scoreSpawnPoint += 1;
             }
+            var sound=this.sound.add('catchCoinSound',{
+                delay: 0,
+                volume: 0.5
+            });
+            sound.play();
         }
     }
 
-    endLevel(){
+    endLevel(player,bau){
         this.end=1;
-        if(this.armor === 0) {
+        var tempoFinal=this.time.now-this.timeLoad;
+        this.tempoTotal+=tempoFinal;
+        if (this.armor == 0) {
             this.player.anims.play("holdR");
-        }
-        else{
+        } else {
             this.player.anims.play("holdRArmor");
         }
         this.bau.anims.play("closeBau",true);
+        var sound=this.sound.add('bauSound',{
+            delay: 0,
+            volume: 0.5
+        });
+        sound.play();
+        this.time.addEvent({
+            delay:500,
+            callback: ()=>{
+                this.scene.run("winGameScene",{score:this.score,time:tempoFinal,theme:'desert'});
+                this.scene.stop();
+            }
+        });
     }
 
     catchCaixa(player,caixa){
@@ -417,6 +420,11 @@ class DesertSinglePalyer extends Phaser.Scene{
                 this.scene.launch("helperCaixa");
                 this.flagCaixa = 1;
             }
+            var sound=this.sound.add('catchCaixaSound',{
+                delay: 0,
+                volume: 0.5
+            });
+            sound.play();
         }
     }
 
@@ -440,7 +448,7 @@ class DesertSinglePalyer extends Phaser.Scene{
     }
 
     returnCollisionMapa(){
-        return this.colision("Mapa");
+        return this.colision("MapaD");
     }
 
     returnCollisionAreia(){
@@ -448,16 +456,16 @@ class DesertSinglePalyer extends Phaser.Scene{
     }
 
     returnCollisionCactos(player, cactos){
-        return this.colisionEnemy(cactos, "playerCollison", "CactoC");
+        return this.colisionEnemy(cactos, this.collisionKey, "cactoC");
     }
 
     colisionEnemy(sprite, keyPlayer, keyCacto) {
-        let xmin = Math.round(Math.max(this.player.getTopLeft().x, sprite.getTopLeft().x));
-        let xmax = Math.round(Math.min(this.player.getTopLeft().x + this.player.body.width, sprite.getTopLeft().x + sprite.width));
-        let ymin = Math.round(Math.max(this.player.getTopLeft().y, sprite.getTopLeft().y));
-        let ymax = Math.round(Math.min(this.player.getTopLeft().y + this.player.body.height, sprite.getTopLeft().y + sprite.height));
+        let xmin = Math.round(Math.max(this.player.body.position.x, sprite.body.position.x));
+        let xmax = Math.round(Math.min(this.player.body.position.x + this.player.body.width, sprite.body.position.x + sprite.body.width));
+        let ymin = Math.round(Math.max(this.player.body.position.y, sprite.body.position.y));
+        let ymax = Math.round(Math.min(this.player.body.position.y + this.player.body.height, sprite.body.position.y + sprite.body.height));
 
-        for (let i = xmin; i < xmax; i++){
+        for (let i = xmin; i < xmax; i++) {
             for (let j = ymin; j < ymax; j++) {
 
                 let selfOffsetX = Math.round(i - this.player.getTopLeft().x);
@@ -468,8 +476,7 @@ class DesertSinglePalyer extends Phaser.Scene{
 
                 let temp1=this.textures.getPixelAlpha(selfOffsetX,selfOffsetY,keyPlayer);
                 let temp2=this.textures.getPixelAlpha(spriteOffsetX,spriteOffsetY,keyCacto);
-
-                if (temp1 > 0 && temp2 > 0) {
+                if(temp1>0 && temp2>0){
                     return true;
                 }
             }
@@ -477,8 +484,9 @@ class DesertSinglePalyer extends Phaser.Scene{
         return false;
     }
 
-
     colision(key){
+        //decidi fazer assim pois verificar todos os pontos do player era demasiado e o jogo ficava muito lento
+        //verifica os pontos principais do player
 
         let width=this.player.body.width;// largura da Imagem
         let heigth=this.player.body.height;// Tamanho da Imagem

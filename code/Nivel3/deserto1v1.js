@@ -154,7 +154,6 @@ class deserto1v1 extends Phaser.Scene{
     }
 
     createAnimations(){
-        //animações normais
         this.anims.create({
             key:'left',
             frames: this.anims.generateFrameNumbers(this.playerKey, {start: 12, end: 13}),
@@ -182,38 +181,38 @@ class deserto1v1 extends Phaser.Scene{
         //animaçoes armadura
         this.anims.create({
             key:'leftArmor',
-            frames: this.anims.generateFrameNumbers(this.playerKey, {start: 24, end: 25}),
+            frames: this.anims.generateFrameNumbers(this.playerKey, {start: 26, end: 27}),
             frameRate: 5,
             repeat: -1
         });
         this.anims.create({
             key: 'rightArmor',
-            frames: this.anims.generateFrameNumbers(this.playerKey, {start: 22, end: 23}),
+            frames: this.anims.generateFrameNumbers(this.playerKey, {start: 24, end: 25}),
             frameRate: 5,
             repeat: -1
         });
         this.anims.create({
             key: 'holdRArmor',
-            frames: this.anims.generateFrameNumbers(this.playerKey, {start:14, end: 17}),
+            frames: this.anims.generateFrameNumbers(this.playerKey, {start:14, end: 18}),
             frameRate: 2,
             repeat: -1
         });
         this.anims.create({
             key: 'holdLArmor',
-            frames: this.anims.generateFrameNumbers(this.playerKey, {start: 18, end: 21}),
+            frames: this.anims.generateFrameNumbers(this.playerKey, {start: 19, end: 23}),
             frameRate: 2,
             repeat: -1
         });
         //animações perder armadura
         this.anims.create({
             key:'leftArmorPerder',
-            frames: this.anims.generateFrameNumbers(this.playerKey, {frames:[12,24,13,25]}),
+            frames: this.anims.generateFrameNumbers(this.playerKey, {frames:[12,26,13,27]}),
             frameRate: 5,
             repeat: -1
         });
         this.anims.create({
             key: 'rightArmorPerder',
-            frames: this.anims.generateFrameNumbers(this.playerKey, {frames:[10,22,11,23 ]}),
+            frames: this.anims.generateFrameNumbers(this.playerKey, {frames:[10,24,11,25 ]}),
             frameRate: 5,
             repeat: -1
         });
@@ -225,7 +224,7 @@ class deserto1v1 extends Phaser.Scene{
         });
         this.anims.create({
             key: 'holdLArmorPerder',
-            frames: this.anims.generateFrameNumbers(this.playerKey, {frames:[5,18,6,19,7,20,8,21]}),
+            frames: this.anims.generateFrameNumbers(this.playerKey, {frames:[5,18,6,19,7,20,8,21,9,22]}),
             frameRate: 2,
             repeat: -1
         });

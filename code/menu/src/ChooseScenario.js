@@ -33,6 +33,7 @@ class ChooseScenario extends Phaser.Scene {
             .on('pointerup',() => {
                 buttonDeserto.setFrame(0);
                 textDeserto.y = 0;
+                this.scene.start("desertoSingle",{player:this.playerKey,headFile:this.headKey,collisionFile:this.collisionKey});
                 });
         //endregion
 
