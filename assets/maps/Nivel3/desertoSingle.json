@@ -4,7 +4,7 @@
      "export":
         {
          "format":"json",
-         "target":"..\/..\/..\/..\/..\/..\/OneDrive - Universidade de Coimbra\/Univerisdade\/UNI-Meu\/2\u00ba Ano\/2\u00ba Semestre\/MULT\/Projeto\/Projeto\/assets\/maps\/Nivel3\/desertoSingle.json"
+         "target":"../../Projeto/assets/maps/Nivel3\/desertoSingle.json"
         }
     },
  "height":40,

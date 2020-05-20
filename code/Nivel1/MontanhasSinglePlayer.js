@@ -25,7 +25,7 @@ class montanhasSinglePlayer extends Phaser.Scene{
         this.stairs.setSize(20,90);
         this.stairs.setScale(2,3);
         this.pause=this.physics.add.staticSprite(770,30,'pauseButton').setScale(0.05,0.05);
-        this.pause.setInteractive({useHandCursor: true}).on('pointerdown',() => {this.scene.launch("pauseScene",{key:"montanha1v1",theme:"mountain"}); this.scene.pause()});
+        this.pause.setInteractive({useHandCursor: true}).on('pointerdown',() => {this.scene.launch("pauseScene",{key:"montanhaSingle",theme:"mountain"}); this.scene.pause()});
         this.pause.setScrollFactor(0);
 
         //Variaveis de Jogo
