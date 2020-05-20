@@ -1,11 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6189d30c-0e65-4660-923f-d368e4e967e9" name="Default Changelist" comment="" />
+    <list default="true" id="6189d30c-0e65-4660-923f-d368e4e967e9" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/menu/src/AnimationScene.js" beforeDir="false" afterPath="$PROJECT_DIR$/code/menu/src/AnimationScene.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/menu/src/IntroScene.js" beforeDir="false" afterPath="$PROJECT_DIR$/code/menu/src/IntroScene.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -37,7 +48,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1589973446075</updated>
-      <workItem from="1589973450435" duration="2280000" />
+      <workItem from="1589973450435" duration="5123000" />
     </task>
     <task id="LOCAL-00001" summary="Bug Fixing">
       <created>1589975423546</created>
