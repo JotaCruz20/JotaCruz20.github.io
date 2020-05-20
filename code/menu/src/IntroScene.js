@@ -81,7 +81,7 @@ class IntroScene extends Phaser.Scene{
         this.load.image('backgroundFloresta','assets/images/Background/florestaa.png');
         //Tiles Deserto
         this.load.image('backgroundDeserto','assets/images/Background/deserto2.png');
-        this.load.image("tile_setD","assets/images/ImagemMapas/_902808864.png");
+        this.load.image("tile_setD","assets/images/ImagemMapas/902808864.png");
         this.load.image('areia','assets/images/SpriteSheets/hyptosis_tile-art-batch-1.png');
         //sprites objetos
         this.load.spritesheet('sign',"assets/images/SpriteSheets/signpost.png",{ frameWidth: 50, frameHeight: 50 });

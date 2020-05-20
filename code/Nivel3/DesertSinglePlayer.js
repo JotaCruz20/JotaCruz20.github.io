@@ -380,7 +380,6 @@ class desertSinglePlayer extends Phaser.Scene{
     endLevel(player,bau){
         this.end=1;
         var tempoFinal=this.time.now-this.timeLoad;
-        this.tempoTotal+=tempoFinal;
         if (this.armor == 0) {
             this.player.anims.play("holdR");
         } else {

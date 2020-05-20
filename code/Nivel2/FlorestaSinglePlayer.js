@@ -454,6 +454,7 @@ class FlorestaSinglePlayer extends Phaser.Scene{
             if(this.lifes==0){
                 this.end=1;
                 this.scene.launch("loseGameScene",{theme:"forest",backKey:"backgroundForest"});
+                this.scene.stop();
             }
             this.flagHelper = 0;
             if (this.spawnpoint == 0) {
