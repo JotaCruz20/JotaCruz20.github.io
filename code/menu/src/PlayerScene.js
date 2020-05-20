@@ -54,7 +54,7 @@ class PlayerScene extends Phaser.Scene {
         this.add.container(410,130,[window_im,this.nextChar,this.prevChar]);
 
         let buttonSP = this.add.sprite(0,0,'btn_300x35_mountain',0);
-        let textSP = this.add.bitmapText(0,0,'pixel','Jogar Modo SinglePlayer',15).setOrigin(0.5);
+        let textSP = this.add.bitmapText(0,0,'pixel','Jogar Modo Treino',15).setOrigin(0.5);
 
         this.add.container(560,455,[buttonSP,textSP])// Ao clicar no botao do SinglePlayer, modo de treino
             .setSize(300,35)
