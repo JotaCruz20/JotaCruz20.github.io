@@ -53,7 +53,7 @@ class MenuAjuda extends Phaser.Scene {
     }
 
     Pag2(){
-        this.text.setText('O personagem, escolhido de três, terá de fazer\n uma corridade vida ou de morte, tendo de ven-\ncer um NPC para poder passar para o nível\n seguinte.\n\n/*IMAGEM DE JOGO*/ ');
+        this.text.setText('O personagem, escolhido de três, terá de fazer\n uma corrida de vida ou de morte, tendo de ven-\ncer um NPC para poder passar para o nível\n seguinte.');
     }
 
 }

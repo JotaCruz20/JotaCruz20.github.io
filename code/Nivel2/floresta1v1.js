@@ -6,7 +6,7 @@ class floresta1v1 extends Phaser.Scene{
     init(data){//recebe as vidas,pontos e tempo total atual
         this.score=data.score;
         this.lifes=data.lifes;
-        this.tempoTotal=data.time;
+        this.tempoTotal=parseInt(data.time);
         this.playerKey=data.player; 
         this.cpuKey=data.cpu;
         this.headKey=data.headFile;
@@ -35,7 +35,6 @@ class floresta1v1 extends Phaser.Scene{
         this.armorLost=0;//Flag para saber se o player acabou de perder a armadura
         this.armor=0;//Flag para saber se o user tem armadura ou nao
         this.end=0;//Flag para saber se o jogo foi terminado
-        this.mapaAltura=609.5;//Altura do Mapa na personagem
         this.mapaAlturaCPU=288;//Altura do Mapa na personagem
         this.flagCpu=0;//Flags que vao ajudar no movimento para a esquerda do CPU
         this.flagCpuDone=0;
@@ -310,7 +309,7 @@ class floresta1v1 extends Phaser.Scene{
         this.physics.add.collider(this.cpu,this.coins,this.catchCoin,null,this);
         this.physics.add.collider(this.cpu,this.caixa);
         this.physics.add.collider(this.cpu,this.bau2,this.endLevel,null,this);
-        this.physics.add.overlap(this.cpu,this.peixes,this.morteCPU,null,this);
+        this.physics.add.overlap(this.cpu,this.peixes,this.morteCPU,this.returnCollisionPeixes,this);
     }
 
     createEnemies(){
@@ -362,7 +361,7 @@ class floresta1v1 extends Phaser.Scene{
     }
 
     transparente(){
-        //FUnçao que faz os peixes desaparecer na agua e aparecer fora de agua
+        //Funçao que faz os peixes desaparecer na agua e aparecer fora de agua
         let peixes = this.peixes.getChildren();
         let i=0;
         if(peixes[0].y==this.vetorPosicaoPeixes[0][1]) {
@@ -393,7 +392,7 @@ class floresta1v1 extends Phaser.Scene{
     createCaixa(){
         this.caixa=this.physics.add.staticGroup();
         this.posicaoCaixas=[[150,359],[1517,456],[150,105],[1517,165]];
-        for(let i=0;i<4;i++) {
+        for(let i=0;i<this.posicaoCaixas.length;i++) {
             this.caixa.create(this.posicaoCaixas[i][0], this.posicaoCaixas[i][1], 'caixa').setSize(30, 30);
         }
 
@@ -554,12 +553,6 @@ class floresta1v1 extends Phaser.Scene{
         this.coins.playAnimation('coin',true);
     }
 
-    overSign(player,sign){
-        if(this.flagHelper==0){
-            this.spawnpoint=1;
-        }
-    }
-
     catchCaixa(player,caixa){
         if(this.player.body.touching.up){
             caixa.anims.play('caixaFade',true);
@@ -579,6 +572,7 @@ class floresta1v1 extends Phaser.Scene{
                     this.armor = 1;
                 } else {
                     this.score += 1;
+                    this.vidas.setText('Coins: '+this.score+'\n    x'+this.lifes);
                 }
             }
             var sound=this.sound.add('catchCaixaSound',{
@@ -607,6 +601,8 @@ class floresta1v1 extends Phaser.Scene{
     morte(player,rochas){
         let originX=32;
         let originY=550;
+        let fimMoedas=5;
+        let moedasCPU=6;
         if(this.armor == 0 && this.armorLost==0) {
             this.lifes -= 1;
             var sound=this.sound.add('deathSound',{
@@ -619,14 +615,13 @@ class floresta1v1 extends Phaser.Scene{
                 this.scene.stop();
                 this.scene.start("loseGameScene",{theme:"forest",backKey:"backgroundForest"});
             }
-            this.flagHelper = 0;
             if (this.spawnpoint == 0) {
                 this.player.body.x = originX;
                 this.player.body.y = originY;
                 this.score = 0;
                 let i;
                 let coins = this.coins.getChildren();
-                for (i = 0; i < 5; i++) {
+                for (i = 0; i < fimMoedas; i++) {
                     coins[i].enableBody(true, this.positionCoins[i][0], this.positionCoins[i][1], true, true);
                 }
                 this.vidas.setText('Coins: ' + this.score + '\n    x' + this.lifes);
@@ -637,7 +632,7 @@ class floresta1v1 extends Phaser.Scene{
                 this.vidas.setText('Coins: ' + this.score + '\n    x' + this.lifes);
                 let i;
                 let coins = this.coins.getChildren();
-                for (i = 5; i < 6; i++) {
+                for (i = fimMoedas; i < moedasCPU; i++) {
                     coins[i].enableBody(true, this.positionCoins[i][0], this.positionCoins[i][1], true, true);
                 }
             }
@@ -657,21 +652,19 @@ class floresta1v1 extends Phaser.Scene{
     morteCPU(CPU,peixes){
         let originX=32;
         let originY=200;
-        if(this.cpu.body.y==this.mapaAlturaCPU){//se o CPU morrer vai repor a sua posição e reiniciar as suas moedas
-            this.gotoXY(32,120);
-            this.flagCpu=0;
-            this.flagCpuDone=0;
-            if(this.cpu.body.x>this.sign2.x){
-                this.gotoXY(this.sign2.x,this.sign2.y);
-                for(let i=7;i<this.positionCoins.length;i++){//Vai recreiar as coins do CPU
-                    this.coins.create(this.positionCoins[i][0],this.positionCoins[i][1],'coins').body.setSize(10,15).setOffset(11,7);
-                }
+        let moedasCPU=7;
+        this.flagCpu=0;
+        this.flagCpuDone=0;
+        if(this.cpu.body.x>this.sign2.x){
+            this.gotoXY(this.sign2.x,this.sign2.y);
+            for(let i=moedasCPU;i<this.positionCoins.length;i++){//Vai recreiar as coins do CPU
+                this.coins.create(this.positionCoins[i][0],this.positionCoins[i][1],'coins').body.setSize(10,15).setOffset(11,7);
             }
-            else{
-                this.gotoXY(originX,originY);
-                for(let i=this.positionCoins.length-1;i<this.positionCoins.length;i++){
-                    this.coins.create(this.positionCoins[i][0],this.positionCoins[i][1],'coins').body.setSize(10,15).setOffset(11,7);
-                }
+        }
+        else{
+            this.gotoXY(originX,originY);
+            for(let i=this.positionCoins.length-1;i<this.positionCoins.length;i++){
+                this.coins.create(this.positionCoins[i][0],this.positionCoins[i][1],'coins').body.setSize(10,15).setOffset(11,7);
             }
         }
     }

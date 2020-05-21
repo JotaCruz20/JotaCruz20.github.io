@@ -100,7 +100,7 @@ class WinGameScene extends Phaser.Scene {
         let btnSelec = this.add.sprite(0,0,'btn_300x80_'+this.theme,0).setScale(1,0.7);
         let textSelec = this.add.bitmapText(0,0,'pixel','Menu Seleção Personagem',20).setOrigin(0.5);
 
-        this.add.container(400,475,[btnSelec,textSelec])
+        this.add.container(400,485,[btnSelec,textSelec])
             .setSize(300,80)
             .setInteractive({useHandCursor:true}, Phaser.Geom.Rectangle.Contains)
 

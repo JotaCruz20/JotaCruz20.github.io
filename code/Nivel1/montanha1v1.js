@@ -529,6 +529,8 @@ class montanha1v1 extends Phaser.Scene{
     morte(player,rochas){
         let xOrigin=32;
         let yOrigin=600;
+        let fimMoedasUser=9;
+        let meioMoedas=4;
         if (this.armor == 0 && this.armorLost==0) {//se nao tem a armadura
             this.lifes -= 1;//retira uma vida
             var sound=this.sound.add('deathSound',{
@@ -548,7 +550,7 @@ class montanha1v1 extends Phaser.Scene{
                 this.score = 0;
                 let i;
                 let coins = this.coins.getChildren();
-                for (i = 0; i < 9; i++) {// de 0 a 9 pois são o numero de moedas correspondentes ao player
+                for (i = 0; i < fimMoedasUser; i++) {// de 0 a 9 pois são o numero de moedas correspondentes ao player
                     coins[i].enableBody(true, this.positionCoins[i][0], this.positionCoins[i][1], true, true);
                 }
                 this.vidas.setText('Coins: ' + this.score + '\n    x' + this.lifes);
@@ -559,7 +561,7 @@ class montanha1v1 extends Phaser.Scene{
                 this.vidas.setText('Coins: ' + this.score + '\n    x' + this.lifes);
                 let i;
                 let coins = this.coins.getChildren();
-                for (i = 4; i < 9; i++) { // de 4 a 9 pois são o numero de moedas correspondentes ao player que estão apos o spawnpoint
+                for (i = meioMoedas; i < fimMoedasUser; i++) { // de 4 a 9 pois são o numero de moedas correspondentes ao player que estão apos o spawnpoint
                     coins[i].enableBody(true, this.positionCoins[i][0], this.positionCoins[i][1], true, true);
                 }
             }
@@ -612,6 +614,7 @@ class montanha1v1 extends Phaser.Scene{
             }
             else {
                 this.score += 1;
+                this.vidas.setText('Coins: '+this.score+'\n    x'+this.lifes);
             }
             if(this.flagCaixa==0){
                 this.scene.launch("helperCaixa");

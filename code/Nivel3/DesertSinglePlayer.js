@@ -310,6 +310,8 @@ class desertSinglePlayer extends Phaser.Scene{
         let originX=32;
         let originY=525;
         let offset=50;
+        let moedasFim=6;
+        let moedasMeio=5;
         if(this.armor == 0 && this.armorLost==0) {
             this.lifes -= 1;
             var sound=this.sound.add('deathSound',{
@@ -322,14 +324,13 @@ class desertSinglePlayer extends Phaser.Scene{
                 this.scene.stop();
                 this.scene.start("loseGameScene",{theme:"desert",backKey:"backgroundDeserto"});
             }
-            this.flagHelper = 0;
             if (this.spawnpoint == 0) {
                 this.player.body.x = originX;
                 this.player.body.y = originY;
                 this.score = 0;
                 let i;
                 let coins = this.coins.getChildren();
-                for (i = 0; i < 5; i++) {
+                for (i = 0; i < moedasFim; i++) {
                     coins[i].enableBody(true, this.positionCoins[i][0], this.positionCoins[i][1], true, true);
                 }
                 this.vidas.setText('Coins: ' + this.score + '\n    x' + this.lifes);
@@ -340,7 +341,7 @@ class desertSinglePlayer extends Phaser.Scene{
                 this.vidas.setText('Coins: ' + this.score + '\n    x' + this.lifes);
                 let i;
                 let coins = this.coins.getChildren();
-                for (i = 5; i < 6; i++) {
+                for (i = moedasMeio; i < moedasFim; i++) {
                     coins[i].enableBody(true, this.positionCoins[i][0], this.positionCoins[i][1], true, true);
                 }
             }
@@ -414,10 +415,7 @@ class desertSinglePlayer extends Phaser.Scene{
             }
             else {
                 this.score += 1;
-            }
-            if(this.flagCaixa === 0){
-                this.scene.launch("helperCaixa");
-                this.flagCaixa = 1;
+                this.vidas.setText('Coins: '+this.score+'\n    x'+this.lifes);
             }
             var sound=this.sound.add('catchCaixaSound',{
                 delay: 0,
@@ -428,10 +426,7 @@ class desertSinglePlayer extends Phaser.Scene{
     }
 
     overSign(){
-        if(this.flagHelper === 0){
-            this.flagHelper=1;
-            this.spawnpoint=1;
-        }
+        this.spawnpoint=1;
     }
 
     upStair(){
@@ -500,8 +495,10 @@ class desertSinglePlayer extends Phaser.Scene{
         let alphaPixelCabecaTopoMeio=this.textures.getPixelAlpha(Math.round(this.player.body.position.x+width/2),Math.round(this.player.body.position.y),key);//checa a colisao com o meio dos pes
         let alphaPixelCabecaTopoFrente=this.textures.getPixelAlpha(Math.round(this.player.body.position.x+width),Math.round(this.player.body.position.y),key);//checa a colisao com o meio dos pes
         let alphaPixelCabecaMeioFente=this.textures.getPixelAlpha(Math.round(this.player.body.position.x+width),Math.round(this.player.body.position.y+heigth/2),key)//checa a colisao com o meio da cabeça frontal
-        let alphaPixelCabecaMeioAtras=this.textures.getPixelAlpha(Math.round(this.player.body.position.x),Math.round(this.player.body.position.y+heigth/2),key)//checa a colisao com o meio da cabeça frontal
-        return  alphaPixelPesFim>0 || alphaPixelPesInicio>0 || alphaPixelPesMeio>0 || alphaPixelCabecaTopoEsquerdo>0 || alphaPixelCabecaTopoMeio>0 || alphaPixelCabecaTopoFrente>0 || alphaPixelCabecaMeioFente>0 || alphaPixelCabecaMeioAtras>0;
+        let alphaPixelCabecaMeioAtras=this.textures.getPixelAlpha(Math.round(this.player.body.position.x),Math.round(this.player.body.position.y+heigth/2),key);//checa a colisao com o meio da cabeça frontal
+        let alphaPixelCorpoFrente=this.textures.getPixelAlpha(Math.round(this.player.body.position.x+width),Math.round(this.player.body.position.y+heigth/2+heigth/4),key);
+        let alphaPixelCorpoTras=this.textures.getPixelAlpha(Math.round(this.player.body.position.x),Math.round(this.player.body.position.y+heigth/2+heigth/4),key);
+        return  alphaPixelPesFim>0 || alphaPixelPesInicio>0 || alphaPixelPesMeio>0 || alphaPixelCabecaTopoEsquerdo>0 || alphaPixelCabecaTopoMeio>0 || alphaPixelCabecaTopoFrente>0 || alphaPixelCabecaMeioFente>0 || alphaPixelCabecaMeioAtras>0 || alphaPixelCorpoFrente>0 || alphaPixelCorpoTras>0;
 
     }
 }

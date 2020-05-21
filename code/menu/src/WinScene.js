@@ -119,7 +119,7 @@ class WinScene extends Phaser.Scene {
             .on('pointerup',() => {
                 btnCont.setFrame(0);
                 textCont.y = 0;
-                this.scene.start(this.nextKey,{score:this.score,lifes:this.lifes,time:this.tempoFinal,player:this.playerKey,cpu:this.cpuKey,headFile:this.headKey,collisionFile:this.collisionKey,theme:"desert"});
+                this.scene.start(this.nextKey,{score:this.score,lifes:this.lifes,time:tempo,player:this.playerKey,cpu:this.cpuKey,headFile:this.headKey,collisionFile:this.collisionKey,theme:"desert"});
                 this.scene.stop();
             });
         //endregion

@@ -5,6 +5,8 @@ class PlayerScene extends Phaser.Scene {
     }
 
     preload(){
+        this.scene.stop("background");
+        this.scene.launch("background",{backKey:"backgroundMountain"});
         //remove as cenas e volta a adicionar
         this.scene.remove("montanha1v1");
         this.scene.add("montanha1v1",montanha1v1,false);

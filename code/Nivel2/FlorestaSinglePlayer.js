@@ -33,7 +33,6 @@ class FlorestaSinglePlayer extends Phaser.Scene{
         this.armorLost=0;//Flag para saber se o player acabou de perder a armadura
         this.armor=0;//Flag para saber se o user tem armadura ou nao
         this.end=0;//Flag para saber se o jogo foi terminado
-        this.mapaAltura=609.5;//Altura do Mapa na personagem
         this.lifes=3;//vidas do jogador
         this.score=0;//pontos
 
@@ -416,6 +415,7 @@ class FlorestaSinglePlayer extends Phaser.Scene{
                     this.armor = 1;
                 } else {
                     this.score += 1;
+                    this.vidas.setText('Coins: '+this.score+'\n    x'+this.lifes);
                 }
             }
             var sound=this.sound.add('catchCaixaSound',{
@@ -444,6 +444,8 @@ class FlorestaSinglePlayer extends Phaser.Scene{
     morte(player,rochas){
         let originX=32;
         let originY=550;
+        let fimMoedas=5;
+        let moedasCPU=6;
         if(this.armor == 0 && this.armorLost==0) {
             this.lifes -= 1;
             var sound=this.sound.add('deathSound',{
@@ -463,18 +465,18 @@ class FlorestaSinglePlayer extends Phaser.Scene{
                 this.score = 0;
                 let i;
                 let coins = this.coins.getChildren();
-                for (i = 0; i < 5; i++) {
+                for (i = 0; i < fimMoedas; i++) {
                     coins[i].enableBody(true, this.positionCoins[i][0], this.positionCoins[i][1], true, true);
                 }
                 this.vidas.setText('Coins: ' + this.score + '\n    x' + this.lifes);
-            } else if(this.armor==1 && this.armorLost==0) {
+            } else{
                 this.player.body.x = this.sign.body.x;
                 this.player.body.y = this.sign.body.y;
                 this.score = this.scoreSpawnPoint;
                 this.vidas.setText('Coins: ' + this.score + '\n    x' + this.lifes);
                 let i;
                 let coins = this.coins.getChildren();
-                for (i = 5; i < 6; i++) {
+                for (i = fimMoedas; i < moedasCPU; i++) {
                     coins[i].enableBody(true, this.positionCoins[i][0], this.positionCoins[i][1], true, true);
                 }
             }
