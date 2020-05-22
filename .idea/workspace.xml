@@ -3,6 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="6189d30c-0e65-4660-923f-d368e4e967e9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/Nivel1/montanha1v1.js" beforeDir="false" afterPath="$PROJECT_DIR$/code/Nivel1/montanha1v1.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/Nivel2/floresta1v1.js" beforeDir="false" afterPath="$PROJECT_DIR$/code/Nivel2/floresta1v1.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/Nivel3/deserto1v1.js" beforeDir="false" afterPath="$PROJECT_DIR$/code/Nivel3/deserto1v1.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/menu/src/IntroScene.js" beforeDir="false" afterPath="$PROJECT_DIR$/code/menu/src/IntroScene.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/menu/src/LoseScene.js" beforeDir="false" afterPath="$PROJECT_DIR$/code/menu/src/LoseScene.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/menu/src/MenuPrincipal.js" beforeDir="false" afterPath="$PROJECT_DIR$/code/menu/src/MenuPrincipal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/menu/src/WinGameScene.js" beforeDir="false" afterPath="$PROJECT_DIR$/code/menu/src/WinGameScene.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/menu/src/WinScene.js" beforeDir="false" afterPath="$PROJECT_DIR$/code/menu/src/WinScene.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,6 +64,7 @@
       <workItem from="1590048243602" duration="7258000" />
       <workItem from="1590072080867" duration="14648000" />
       <workItem from="1590156655590" duration="7409000" />
+      <workItem from="1590180513599" duration="2421000" />
     </task>
     <task id="LOCAL-00001" summary="Bug Fixing">
       <created>1589975423546</created>
@@ -75,7 +84,7 @@
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="2" />
+    <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Bug Fixing" />

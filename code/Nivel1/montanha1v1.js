@@ -340,7 +340,7 @@ class montanha1v1 extends Phaser.Scene{
         this.physics.add.collider(this.cpu, this.layerDivisor);
         this.physics.add.collider(this.cpu,this.coins,this.catchCoin,null,this);
         this.physics.add.collider(this.cpu,this.caixa);
-        this.physics.add.collider(this.cpu,this.bau2,this.endLevel,null,this);
+        this.collisaoBau=this.physics.add.collider(this.cpu,this.bau2,this.endLevel,null,this);
     }
 
     createCaixa(){
@@ -640,7 +640,8 @@ class montanha1v1 extends Phaser.Scene{
             }
         }
         else{
-            this.cpu.anims.play("holdRCPU")
+            this.cpu.anims.play("holdRCPU");
+            this.collisaoBau.destroy();
         }
         this.bau.anims.play("closeBau",true);
         var sound=this.sound.add('bauSound',{

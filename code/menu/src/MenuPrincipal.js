@@ -7,22 +7,11 @@ class MenuPrincipal extends Phaser.Scene {
     }
 
     create(){
-        this.theme = "mountain";
         this.scene.launch('background',{backKey:"backgroundMountain"});
+        this.theme = "mountain";
         this.scene.bringToTop();
         //region Buttons
         //region Começar
-
-        /*
-        let teste = 0
-        let textranking = this.add.bitmapText(30,20,'pixel','ranking',15).setOrigin(0.5)
-            .setInteractive({useHandCursor:true}, Phaser.Geom.Rectangle.Contains)
-            .on('pointerdown',() => {
-                this.scene.stop();
-                this.scene.start("rankingScene",{prev:"principalScene",theme: this.theme, pontacao: teste});});
-        */
-
-
 
 
         let buttonComecar = this.add.sprite(0,0,'btn_190x49_mountain',0);

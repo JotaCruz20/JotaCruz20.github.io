@@ -152,6 +152,7 @@ class IntroScene extends Phaser.Scene{
 
             this.scene.start('audioManager');
             this.scene.start('background');
+            this.scene.launch('background',{backKey:"backgroundMountain"});
             this.scene.start("principalScene");
         });
     }

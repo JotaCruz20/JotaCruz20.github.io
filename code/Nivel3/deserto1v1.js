@@ -38,11 +38,8 @@ class deserto1v1 extends Phaser.Scene{
         this.modo = 1;
         this.lifes = 3;
         this.counter = 0;
-        this.score = 0;
         this.scoreSpawnPoint = 0;
         this.spawnpoint = 0;
-        this.flagHelper = 0;
-        this.flagCaixa = 0;
         this.armorLost = 0;
         this.armor = 0;
         this.end = 0;
@@ -325,7 +322,7 @@ class deserto1v1 extends Phaser.Scene{
         this.physics.add.collider(this.cpu, this.layerGround);
         this.physics.add.collider(this.cpu,this.coins,this.catchCoin,null,this);
         this.physics.add.collider(this.cpu,this.caixa);
-        this.physics.add.collider(this.player,this.bau2,this.endLevel,null,this);
+        this.collisoesBau=this.physics.add.collider(this.player,this.bau2,this.endLevel,null,this);
         this.physics.add.overlap(this.cpu,this.cactos,this.morteCPU,this.returnCollisionCactos,this);
     }
 
@@ -573,7 +570,8 @@ class deserto1v1 extends Phaser.Scene{
             }
         }
         else{
-            this.cpu.anims.play("holdRCPU")
+            this.cpu.anims.play("holdRCPU");
+            this.collisoesBau.destroy();
         }
         this.bau.anims.play("closeBau",true);
         var sound=this.sound.add('bauSound',{
