@@ -14,13 +14,14 @@ class WinGameScene extends Phaser.Scene {
     }
 
     create(){
+
         let tempoTemp=this.tempoFinal/1000;
         let tempo=(Math.round(tempoTemp*100)/100).toFixed(2);
         let pontuacao=(tempo-this.score).toFixed(2);
         //region Window
         let window = this.add.sprite(0,0,'w_400x450_'+this.theme).setOrigin(0,0);
         let text = this.add.bitmapText(210,40,'pixel','Passaste o Jogo!\nVamos ver a pontuação Final',25).setOrigin(0.5);
-        let highScore = this.add.bitmapText(230,90,'pixel','Pontos: '+pontuacao,20).setOrigin(0.5);
+        let highScore = this.add.bitmapText(230,90,'pixel','Pontos: ' + pontuacao,20).setOrigin(0.5);
         let coinsScore = this.add.bitmapText(260,120,'pixel','Total de Moedas: '+this.score,15).setOrigin(0.5);
         let timeScore = this.add.bitmapText(260,150,'pixel','Total de Tempo: '+tempo,15).setOrigin(0.5);
 
@@ -93,11 +94,12 @@ class WinGameScene extends Phaser.Scene {
             .on('pointerup',() => {
                 btnCont.setFrame(0);
                 textCont.y = 0;
-                this.scene.start("rankingScene",{prev:"winGameScene",theme: this.theme});});
+                this.scene.start("rankingScene",{prev:"winGameScene",theme: this.theme, pontuacao: pontuacao});
+            });
         //endregion
 
-        //seleção
-        let btnSelec = this.add.sprite(0,0,'btn_300x80_'+this.theme,0).setScale(1,0.7);
+        //region seleção
+        let btnSelec = this.add.sprite(0,0,'btn_300x80_'+ this.theme,0).setScale(1,0.7);
         let textSelec = this.add.bitmapText(0,0,'pixel','Menu Seleção Personagem',20).setOrigin(0.5);
 
         this.add.container(400,485,[btnSelec,textSelec])
@@ -115,6 +117,7 @@ class WinGameScene extends Phaser.Scene {
                 this.scene.stop("background");
                 this.scene.start("chooseScene");
             });
+        //endregion
     }
 
 

@@ -13,6 +13,18 @@ class MenuPrincipal extends Phaser.Scene {
         //region Buttons
         //region Começar
 
+        /*
+        let teste = 0
+        let textranking = this.add.bitmapText(30,20,'pixel','ranking',15).setOrigin(0.5)
+            .setInteractive({useHandCursor:true}, Phaser.Geom.Rectangle.Contains)
+            .on('pointerdown',() => {
+                this.scene.stop();
+                this.scene.start("rankingScene",{prev:"principalScene",theme: this.theme, pontacao: teste});});
+        */
+
+
+
+
         let buttonComecar = this.add.sprite(0,0,'btn_190x49_mountain',0);
         let textComecar = this.add.bitmapText(0,0,'pixel','Começar',15).setOrigin(0.5);
 
@@ -102,7 +114,6 @@ class MenuPrincipal extends Phaser.Scene {
                 this.scene.close("principalScene");
 
             });
-        //endregion
         //endregion
     }
     update() {

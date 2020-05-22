@@ -10,7 +10,7 @@ var config = {
     physics: {
         default: 'arcade',
         fps:{
-          target:60,
+            target:60,
             forceSetTimeOut: true
         },
         arcade: {
@@ -19,7 +19,7 @@ var config = {
         }
     },
     //scene:[PlayerScene,montanha1v1,floresta1v1,helperMontanha,helperCaixa,Morte]
-    scene:[BootScene,background,IntroScene,MenuPrincipal,audioManager,AnimationScene,LoseScene,LoseGameScene,MenuAjuda,MenuCreditos,MenuOpcoes,PlayerScene,WinGameScene,WinScene,montanha1v1,floresta1v1,deserto1v1,montanhasSinglePlayer,FlorestaSinglePlayer,desertSinglePlayer,helperMontanha,helperCaixa,MenuPausa,ChooseScenario]
+    scene:[BootScene,background,IntroScene,MenuPrincipal,audioManager,AnimationScene,LoseScene,LoseGameScene,MenuAjuda,MenuRanking,MenuCreditos,MenuOpcoes,PlayerScene,WinGameScene,WinScene,montanha1v1,floresta1v1,deserto1v1,montanhasSinglePlayer,FlorestaSinglePlayer,desertSinglePlayer,helperMontanha,helperCaixa,MenuPausa,ChooseScenario]
 };
 
 var game= new Phaser.Game(config);
