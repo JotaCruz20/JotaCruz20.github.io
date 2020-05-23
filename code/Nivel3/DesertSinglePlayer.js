@@ -395,7 +395,7 @@ class desertSinglePlayer extends Phaser.Scene{
         this.time.addEvent({
             delay:500,
             callback: ()=>{
-                this.scene.run("winGameScene",{score:this.score,time:tempoFinal,theme:'desert'});
+                this.scene.run("winGameScene",{score:this.score,time:tempoFinal,theme:'desert',treino:1});
                 this.scene.stop();
             }
         });

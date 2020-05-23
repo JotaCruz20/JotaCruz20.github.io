@@ -94,6 +94,7 @@ class IntroScene extends Phaser.Scene{
         this.load.spritesheet('coracao',"assets/images/SpriteSheets/heart_spritesheet.png",{frameWidth:15, frameHeight:15});
         this.load.spritesheet('sapo',"assets/images/SpriteSheets/sapo_sprite.png",{frameWidth:50, frameHeight:50});
         this.load.spritesheet('cacto','assets/images/SpriteSheets/cacto_sprite.png',{ frameWidth: 36,frameHeight: 44 });
+        this.load.spritesheet('close','assets/images/Menus/close.png',{ frameWidth: 30, frameHeight: 30 });
         //Mapas
         this.load.tilemapTiledJSON("map","assets/maps/Nivel1/montanhas1v1.json");
         this.load.tilemapTiledJSON("mapSingle","assets/maps/Nivel1/MontanhasSingle.json");

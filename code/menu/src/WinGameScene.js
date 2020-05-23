@@ -12,6 +12,7 @@ class WinGameScene extends Phaser.Scene {
         this.scoreFinal=data.final;
         this.score=data.score;
         this.theme=data.theme;
+        this.treino=data.treino;
     }
 
     create(){
@@ -94,7 +95,16 @@ class WinGameScene extends Phaser.Scene {
             .on('pointerup',() => {
                 btnCont.setFrame(0);
                 textCont.y = 0;
-                this.scene.start("rankingScene",{prev:"winGameScene",theme: this.theme, pontuacao: this.scoreFinal});
+                if(this.treino!=1) {
+                    this.scene.start("rankingScene", {
+                        prev: "winGameScene",
+                        theme: this.theme,
+                        pontuacao: this.scoreFinal
+                    });
+                }
+                else{
+                    this.scene.launch("noRank",{theme:this.theme});
+                }
             });
         //endregion
 
