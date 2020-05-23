@@ -16,6 +16,7 @@ class helperCaixa extends Phaser.Scene{
     update(){
         if(this.controls.space.isDown){
             this.scene.stop();
+            this.scene.run("montanha1v1");
         }
     }
 }

@@ -617,6 +617,7 @@ class montanha1v1 extends Phaser.Scene{
                 this.vidas.setText('Coins: '+this.score+'\n    x'+this.lifes);
             }
             if(this.flagCaixa==0){
+                this.scene.pause();
                 this.scene.launch("helperCaixa");
                 this.flagCaixa=1;
             }
@@ -667,6 +668,7 @@ class montanha1v1 extends Phaser.Scene{
     overSign(player,sign){
         //Faz a scene de ajuda aparecer
         if(this.flagHelper==0){
+            this.scene.pause();
             this.scene.launch("helperMontanha");
             this.flagHelper=1;
             this.spawnpoint=1;

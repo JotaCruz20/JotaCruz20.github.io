@@ -4,12 +4,13 @@
     <list default="true" id="6189d30c-0e65-4660-923f-d368e4e967e9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/code/Nivel1/MontanhasSinglePlayer.js" beforeDir="false" afterPath="$PROJECT_DIR$/code/Nivel1/MontanhasSinglePlayer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/Nivel1/helperCaixa.js" beforeDir="false" afterPath="$PROJECT_DIR$/code/Nivel1/helperCaixa.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/Nivel1/helperMontanha.js" beforeDir="false" afterPath="$PROJECT_DIR$/code/Nivel1/helperMontanha.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/Nivel1/montanha1v1.js" beforeDir="false" afterPath="$PROJECT_DIR$/code/Nivel1/montanha1v1.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/code/Nivel2/FlorestaSinglePlayer.js" beforeDir="false" afterPath="$PROJECT_DIR$/code/Nivel2/FlorestaSinglePlayer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/code/Nivel3/DesertSinglePlayer.js" beforeDir="false" afterPath="$PROJECT_DIR$/code/Nivel3/DesertSinglePlayer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/code/game.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/menu/src/IntroScene.js" beforeDir="false" afterPath="$PROJECT_DIR$/code/menu/src/IntroScene.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/menu/src/WinGameScene.js" beforeDir="false" afterPath="$PROJECT_DIR$/code/menu/src/WinGameScene.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/Nivel3/deserto1v1.js" beforeDir="false" afterPath="$PROJECT_DIR$/code/Nivel3/deserto1v1.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/menu/src/NoRank.js" beforeDir="false" afterPath="$PROJECT_DIR$/code/menu/src/NoRank.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,6 +66,7 @@
       <workItem from="1590156655590" duration="7409000" />
       <workItem from="1590180513599" duration="2510000" />
       <workItem from="1590250096098" duration="3212000" />
+      <workItem from="1590274808123" duration="1638000" />
     </task>
     <task id="LOCAL-00001" summary="Bug Fixing">
       <created>1589975423546</created>

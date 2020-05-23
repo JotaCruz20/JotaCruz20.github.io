@@ -472,7 +472,10 @@ class montanhasSinglePlayer extends Phaser.Scene{
         this.time.addEvent({
             delay:500,
             callback: ()=>{
-                this.scene.run("winGameScene",{score:this.score,time:tempoFinal,theme:'mountain',treino:1});
+                let tempoTemp=tempoFinal/1000;
+                let tempo=(Math.round(tempoTemp*100)/100).toFixed(2);
+                let pontuacao=(tempo-this.score).toFixed(2);
+                this.scene.run("winGameScene",{score:this.score,time:tempoFinal,theme:'mountain',treino:1,final:pontuacao});
                 this.scene.stop();
             }
         });

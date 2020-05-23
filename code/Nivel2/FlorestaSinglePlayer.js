@@ -243,7 +243,7 @@ class FlorestaSinglePlayer extends Phaser.Scene{
         //animaçao bau
         this.anims.create({
             key:'closeBau',
-            frames: this.anims.generateFrameNames('bau',{start:0, end:3}),
+            frames: this.anims.generateFrameNames('bauF',{start:0, end:3}),
             frameRate:10
         });
         //animacao coracao
@@ -277,7 +277,7 @@ class FlorestaSinglePlayer extends Phaser.Scene{
             allowGravity: false
         });
         //Posições dos inimigos
-        this.vetorPosicaoPeixes=[[270,660],[585,660],[1455,660],[1580,660],[1710,660],[3090,660]];
+        this.vetorPosicaoPeixes=[[270,660],[585,660],[1455,660],[1580,660],[1710,660],[3090,660],[3260,660]];
         this.vetorSapo=[[2050,460]];
         for(let i=0;i<this.vetorPosicaoPeixes.length;i++) {
             this.peixes.create(this.vetorPosicaoPeixes[i][0], this.vetorPosicaoPeixes[i][1], 'piranha').setScale(1.5,1.5);
@@ -515,7 +515,10 @@ class FlorestaSinglePlayer extends Phaser.Scene{
         this.time.addEvent({
             delay:500,
             callback: ()=>{
-                this.scene.run("winGameScene",{score:this.score,time:tempoFinal,theme:'forest',treino:1});
+                let tempoTemp=tempoFinal/1000;
+                let tempo=(Math.round(tempoTemp*100)/100).toFixed(2);
+                let pontuacao=(tempo-this.score).toFixed(2);
+                this.scene.run("winGameScene",{score:this.score,time:tempoFinal,theme:'forest',treino:1,final:pontuacao});
                 this.scene.stop();
             }
         });

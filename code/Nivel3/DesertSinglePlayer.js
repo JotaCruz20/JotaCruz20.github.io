@@ -310,7 +310,7 @@ class desertSinglePlayer extends Phaser.Scene{
         let originX=32;
         let originY=525;
         let offset=50;
-        let moedasFim=6;
+        let moedasFim=9;
         let moedasMeio=5;
         if(this.armor == 0 && this.armorLost==0) {
             this.lifes -= 1;
@@ -395,7 +395,10 @@ class desertSinglePlayer extends Phaser.Scene{
         this.time.addEvent({
             delay:500,
             callback: ()=>{
-                this.scene.run("winGameScene",{score:this.score,time:tempoFinal,theme:'desert',treino:1});
+                let tempoTemp=tempoFinal/1000;
+                let tempo=(Math.round(tempoTemp*100)/100).toFixed(2);
+                let pontuacao=(tempo-this.score).toFixed(2);
+                this.scene.run("winGameScene",{score:this.score,time:tempoFinal,theme:'desert',treino:1,final:pontuacao});
                 this.scene.stop();
             }
         });

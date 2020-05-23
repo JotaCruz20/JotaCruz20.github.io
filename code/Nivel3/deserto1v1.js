@@ -490,7 +490,7 @@ class deserto1v1 extends Phaser.Scene{
         let originX=32;
         let originY=525;
         let offset=50;
-        let moedasFim=6;
+        let moedasFim=9;
         let moedasMeio=5;
         if(this.armor == 0 && this.armorLost==0) {
             this.lifes -= 1;
